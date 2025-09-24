@@ -71,15 +71,16 @@ namespace Lilly
             public static void Postfix(Pawn ___pawn)
             {
                 var pawn = ___pawn;
+
                 if (pawn?.Faction != null && pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
                     !pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
                 {
+                    ___pawn.Map.designationManager.RemoveAllDesignationsOn(___pawn);
+                    ___pawn.Map.designationManager.AddDesignation(new Designation(___pawn, CaptureThemDefOf.CaptureThemCapture));
                     MyLog.Message(
                         $"{ "MessageCapturingWillAngerFaction".Translate(pawn.Named("PAWN")).AdjustedFor(pawn)}, { pawn}, { MessageTypeDefOf.CautionInput}");
                 }
 
-                ___pawn.Map.designationManager.RemoveAllDesignationsOn(___pawn);
-                ___pawn.Map.designationManager.AddDesignation(new Designation(___pawn, CaptureThemDefOf.CaptureThemCapture));
             }
         }
     }
