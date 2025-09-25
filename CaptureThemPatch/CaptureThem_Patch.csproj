@@ -7,7 +7,7 @@
     <ProjectGuid>{E6407B2F-8421-4493-A803-3CE2076B36BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaptureThemLilly</RootNamespace>
+    <RootNamespace>Lilly.CaptureThem</RootNamespace>
     <AssemblyName>CaptureThemLillyPatch</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
