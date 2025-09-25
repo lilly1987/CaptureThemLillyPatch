@@ -27,12 +27,12 @@ namespace Lilly
             }
             if (harmony == null)
             {
-                MyLog.Warning($"{harmonyId} Patch ST");
+                MyLog.Message($"{harmonyId} Patch ST");
                 try
                 {
                     harmony = new Harmony(harmonyId);
                     harmony.PatchAll();
-                    MyLog.Warning($"{harmonyId} Patch Succ", color: "27AE60FF");
+                    MyLog.Message($"{harmonyId} Patch Succ", color: "27AE60FF");
                 }
                 catch (System.Exception e)
                 {
@@ -40,7 +40,7 @@ namespace Lilly
                     MyLog.Error(e.ToString());
                     MyLog.Error($"{harmonyId} Patch Fail");
                 }
-                MyLog.Warning($"Patch ED");
+                MyLog.Message($"Patch ED");
             }
         }
 
@@ -48,12 +48,12 @@ namespace Lilly
         {
             if (harmony != null)
             {
-                MyLog.Warning($"{harmonyId} UnPatch ST");
+                MyLog.Message($"{harmonyId} UnPatch ST");
                 try
                 {
                     harmony.UnpatchAll(harmonyId);
                     harmony = null;
-                    MyLog.Warning($"{harmonyId} UnPatch Succ",color: "27AE60FF");
+                    MyLog.Message($"{harmonyId} UnPatch Succ",color: "27AE60FF");
                 }
                 catch (System.Exception e)
                 {
@@ -61,7 +61,7 @@ namespace Lilly
                     MyLog.Error(e.ToString());
                     MyLog.Error($"{harmonyId} UnPatch Fail");
                 }
-                MyLog.Warning($"{harmonyId} UnPatch ED");
+                MyLog.Message($"{harmonyId} UnPatch ED");
             }
         }
 
@@ -71,14 +71,12 @@ namespace Lilly
             public static void Postfix(Pawn ___pawn)
             {
                 var pawn = ___pawn;
-
+                MyLog.Message($"MakeDowned {pawn} {pawn?.Faction} {pawn.Faction != Faction.OfPlayer} {!pawn.Faction.Hidden} {pawn.Faction.HostileTo(Faction.OfPlayer)} {!pawn.IsPrisonerOfColony} {pawn.RaceProps.Humanlike}", print: CaptureThemLillySettings.debugMode);
                 if (pawn?.Faction != null && pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
-                    !pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
+                    pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
                 {
                     ___pawn.Map.designationManager.RemoveAllDesignationsOn(___pawn);
                     ___pawn.Map.designationManager.AddDesignation(new Designation(___pawn, CaptureThemDefOf.CaptureThemCapture));
-                    MyLog.Message(
-                        $"{ "MessageCapturingWillAngerFaction".Translate(pawn.Named("PAWN")).AdjustedFor(pawn)}, { pawn}, { MessageTypeDefOf.CautionInput}");
                 }
 
             }

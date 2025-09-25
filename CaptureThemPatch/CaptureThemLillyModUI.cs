@@ -20,12 +20,12 @@ namespace Lilly
 
         public CaptureThemLillyModUI(ModContentPack content) : base(content)
         {
-            MyLog.Warning($"ST");
+            MyLog.Message($"ST");
 
             ui = this;
             settings = GetSettings<CaptureThemLillySettings>();// 주의. MainSettings의 patch가 먼저 실행됨            
 
-            MyLog.Warning($"ED");
+            MyLog.Message($"ED");
         }
 
         public override string SettingsCategory()

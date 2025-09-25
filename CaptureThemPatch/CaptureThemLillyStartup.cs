@@ -10,9 +10,9 @@ namespace Lilly
 
         static CaptureThemLillyStartup()
         {
-            MyLog.Warning($"ST");
+            MyLog.Message($"ST");
             CaptureThemLillyPatch.Patch();
-            MyLog.Warning($"ED");
+            MyLog.Message($"ED");
         }
     }
 }

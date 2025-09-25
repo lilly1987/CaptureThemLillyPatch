@@ -18,9 +18,9 @@ namespace Lilly
 
         public CaptureThemLillySettings()
         {
-            MyLog.Warning($"ST");
+            MyLog.Message($"ST");
             settings = this;
-            MyLog.Warning($"ED");
+            MyLog.Message($"ED");
         }
 
         public override void ExposeData()
