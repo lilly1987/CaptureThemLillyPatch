@@ -7,16 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace Lilly
+namespace Lilly.CaptureThem
 {
-    public class CaptureThemLillySettings : ModSettings
+    public class Settings : ModSettings
     {
-        public static CaptureThemLillySettings settings;
+        public static Settings settings;
 
         public static bool debugMode = false;
         public static bool onPatch = true;
 
-        public CaptureThemLillySettings()
+        public Settings()
         {
             MyLog.Message($"ST");
             settings = this;
@@ -31,11 +31,11 @@ namespace Lilly
 
             if (onPatch)
             {
-                CaptureThemLillyPatch.Patch();
+                ModPatch.Patch();
             }
             else
             {
-                CaptureThemLillyPatch.UnPatch();
+                ModPatch.UnPatch();
             }
         }
 

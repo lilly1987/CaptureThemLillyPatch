@@ -7,7 +7,7 @@
     <ProjectGuid>{E6407B2F-8421-4493-A803-3CE2076B36BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lilly</RootNamespace>
+    <RootNamespace>CaptureThemLilly</RootNamespace>
     <AssemblyName>CaptureThemLillyPatch</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -57,12 +57,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CaptureThemLillyPatch.cs" />
-    <Compile Include="CaptureThemLillySettings.cs" />
-    <Compile Include="CaptureThemLillyModUI.cs" />
+    <Compile Include="ModPatch.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="ModUI.cs" />
     <Compile Include="MyLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CaptureThemLillyStartup.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

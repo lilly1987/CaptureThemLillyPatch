@@ -1,17 +1,17 @@
 ﻿using HarmonyLib;
 using Verse;
 
-namespace Lilly
+namespace Lilly.CaptureThem
 {
     // Mod 다음에 StaticConstructorOnStartup 실행
     //[StaticConstructorOnStartup]
-    public static class CaptureThemLillyStartup
+    public static class Startup
     {
 
-        static CaptureThemLillyStartup()
+        static Startup()
         {
             MyLog.Message($"ST");
-            CaptureThemLillyPatch.Patch();
+            ModPatch.Patch();
             MyLog.Message($"ED");
         }
     }

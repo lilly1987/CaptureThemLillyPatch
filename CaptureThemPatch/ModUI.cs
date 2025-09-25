@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
-namespace Lilly
+namespace Lilly.CaptureThem
 {
     // Mod 다음에 StaticConstructorOnStartup 실행
-    public class CaptureThemLillyModUI : Mod
+    public class ModUI : Mod
     {
-        public static CaptureThemLillySettings settings; 
-        public static CaptureThemLillyModUI ui;
+        public static Settings settings; 
+        public static ModUI ui;
 
-        public CaptureThemLillyModUI(ModContentPack content) : base(content)
+        public ModUI(ModContentPack content) : base(content)
         {
             MyLog.Message($"ST");
 
             ui = this;
-            settings = GetSettings<CaptureThemLillySettings>();// 주의. MainSettings의 patch가 먼저 실행됨            
+            settings = GetSettings<Settings>();// 주의. MainSettings의 patch가 먼저 실행됨            
 
             MyLog.Message($"ED");
         }
@@ -44,8 +44,8 @@ namespace Lilly
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(rect);
 
-            listing.CheckboxLabeled("Debug Mode".Translate(), ref CaptureThemLillySettings.debugMode, ".");
-            listing.CheckboxLabeled("Patch".Translate(), ref CaptureThemLillySettings.onPatch, ".");
+            listing.CheckboxLabeled("Debug Mode".Translate(), ref Settings.debugMode, ".");
+            listing.CheckboxLabeled("Patch".Translate(), ref Settings.onPatch, ".");
 
             listing.GapLine();
             listing.End();

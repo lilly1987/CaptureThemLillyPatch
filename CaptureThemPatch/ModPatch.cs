@@ -1,6 +1,5 @@
 ﻿using CaptureThem;
 using HarmonyLib;
-using Lilly;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -12,9 +11,9 @@ using System.Threading.Tasks;
 using Verse;
 using static System.Collections.Specialized.BitVector32;
 
-namespace Lilly
+namespace Lilly.CaptureThem
 {
-    public static class CaptureThemLillyPatch
+    public static class ModPatch
     {
         public static string harmonyId = "Lilly.CaptureThemPatch";
         public static Harmony harmony;
@@ -71,7 +70,7 @@ namespace Lilly
             public static void Postfix(Pawn ___pawn)
             {
                 var pawn = ___pawn;
-                MyLog.Message($"MakeDowned {pawn} {pawn?.Faction} {pawn.Faction != Faction.OfPlayer} {!pawn.Faction.Hidden} {pawn.Faction.HostileTo(Faction.OfPlayer)} {!pawn.IsPrisonerOfColony} {pawn.RaceProps.Humanlike}", print: CaptureThemLillySettings.debugMode);
+                MyLog.Message($"MakeDowned {pawn} {pawn?.Faction} {pawn.Faction != Faction.OfPlayer} {!pawn.Faction.Hidden} {pawn.Faction.HostileTo(Faction.OfPlayer)} {!pawn.IsPrisonerOfColony} {pawn.RaceProps.Humanlike}", print: Settings.debugMode);
                 if (pawn?.Faction != null && pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
                     pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
                 {
