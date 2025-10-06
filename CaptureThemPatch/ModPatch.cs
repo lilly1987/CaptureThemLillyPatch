@@ -80,7 +80,7 @@ namespace Lilly.CaptureThem
                     }
                     if (pawn.Faction == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} Faction == null");
+                        MyLog.Warning($"{pawn.Name.ToStringFull} Faction == null", print: Settings.debugMode);
                         return;
                     }
                     else
@@ -89,7 +89,7 @@ namespace Lilly.CaptureThem
                     }
                     if (pawn.RaceProps == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} RaceProps == null");
+                        MyLog.Warning($"{pawn.Name.ToStringFull} RaceProps == null", print: Settings.debugMode);
                         return;
                     }
                     else
@@ -98,7 +98,7 @@ namespace Lilly.CaptureThem
                     }
                     if (pawn.Map == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} Map == null");
+                        MyLog.Warning($"{pawn.Name.ToStringFull} Map == null", print: Settings.debugMode);
                         return;
                     }
                     else
