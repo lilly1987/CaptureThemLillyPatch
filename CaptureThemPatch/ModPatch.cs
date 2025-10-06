@@ -69,41 +69,60 @@ namespace Lilly.CaptureThem
         {
             public static void Postfix(Pawn ___pawn)
             {
+                Faction faction = null;
+                string name = null;
+                bool? Humanlike = null;
+                bool map = false;
+                bool designationManager = false;
                 try
                 {
-
                     var pawn = ___pawn;
                     if (pawn == null)
                     {
                         MyLog.Warning("pawn == null");
                         return;
                     }
+                    if (pawn.Name!=null)
+                        name = pawn.Name.ToStringFull;
+
                     if (pawn.Faction == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} Faction == null", print: Settings.debugMode);
+                        MyLog.Warning($"{name}/Faction == null", print: Settings.debugMode);
                         return;
                     }
                     else
                     {
-                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.Faction}", print: Settings.debugMode);
+                        faction = pawn.Faction;
+                        MyLog.Message($"{name}/{pawn.Faction}", print: Settings.debugMode);
                     }
                     if (pawn.RaceProps == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} RaceProps == null", print: Settings.debugMode);
+                        MyLog.Warning($"{name}/RaceProps == null", print: Settings.debugMode);
                         return;
                     }
                     else
                     {
-                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.RaceProps.Humanlike}", print: Settings.debugMode);
+                        Humanlike=pawn.RaceProps.Humanlike;
+                        MyLog.Message($"{name}/{pawn.RaceProps.Humanlike}", print: Settings.debugMode);
                     }
                     if (pawn.Map == null)
                     {
-                        MyLog.Warning($"{pawn.Name.ToStringFull} Map == null", print: Settings.debugMode);
+                        MyLog.Warning($"{name}/Map == null", print: Settings.debugMode);
                         return;
                     }
                     else
                     {
-                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.Map}", print: Settings.debugMode);
+                        map = true;
+                    }
+                    if (pawn.Map.designationManager == null)
+                    {
+                        MyLog.Warning($"{name}/Map.designationManager == null", print: Settings.debugMode);
+                        return;
+                    }
+                    else
+                    {
+                        designationManager=true;
+                        MyLog.Message($"{name}/{pawn.Map}", print: Settings.debugMode);
                     }
                     if (pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
                         pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
@@ -115,6 +134,10 @@ namespace Lilly.CaptureThem
                 catch (Exception e)
                 {
                     MyLog.Error(e.ToString());
+                    MyLog.Error($"{faction}/{name}/{Humanlike}/{map}/{designationManager}");
+                }
+                finally
+                {
                 }
 
             }

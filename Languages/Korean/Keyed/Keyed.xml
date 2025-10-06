@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <growDays>성장일</growDays>
+  <fertilityMin>최소 비옥도</fertilityMin>
+  <fertilitySensitivity>토양 민감도</fertilitySensitivity>
+  <sowWork>심는 작업량</sowWork>
+  <harvestWork>수확 작업량</harvestWork>
+  <harvestYield>수확량</harvestYield>
+  <growMinGlow>최소 광량</growMinGlow>
+  <growOptimalGlow>최고 광량 0.0~1.0</growOptimalGlow>
+  <harvestMinGrowth>최소 성장률 0.0 ~ 1.0</harvestMinGrowth>
+  <harvestAfterGrowth>수확 가능 성장율</harvestAfterGrowth>
+	<minGrowthTemperature>성장할 수 있는 최소 온도</minGrowthTemperature>
+  <maxGrowthTemperature>성장할 수 있는 최대 온도</maxGrowthTemperature>
+  <minOptimalGrowthTemperature>최적의 속도로 성장하기 시작하는 최소 온도</minOptimalGrowthTemperature>
+  <maxOptimalGrowthTemperature>최적의 속도로 성장하기 시작하는 최대 온도</maxOptimalGrowthTemperature>
+  <minSpacingBetweenSamePlant>같은 작물 간 최소 간격</minSpacingBetweenSamePlant> 
+  <lifespanDaysPerGrowDays>성장일수 대비 수명 비율</lifespanDaysPerGrowDays> 
+  <plantRespawningCommonalityFactor>야생 재생산 확률 보정</plantRespawningCommonalityFactor> 
+  <cavePlantWeight>동굴에서 자랄 확률</cavePlantWeight> 
+  <topWindExposure>바람 노출도 (0.0~1.0)</topWindExposure> 
+  <wildClusterWeight>야생 군집 생성 확률</wildClusterWeight> 
+  <PlantRestingAndSchedulePatch>작물 휴식기 없음. 스케줄 검사 없음.</PlantRestingAndSchedulePatch> 
+  <PlantRestingAndSchedulePatchDec>주의사항 : CompProperties_Schedule를 사용하는 모든것을 다 허용함.</PlantRestingAndSchedulePatchDec> 
+
+</LanguageData>
