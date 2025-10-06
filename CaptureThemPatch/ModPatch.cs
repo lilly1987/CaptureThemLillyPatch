@@ -69,13 +69,52 @@ namespace Lilly.CaptureThem
         {
             public static void Postfix(Pawn ___pawn)
             {
-                var pawn = ___pawn;
-                MyLog.Message($"MakeDowned {pawn} {pawn?.Faction} {pawn.Faction != Faction.OfPlayer} {!pawn.Faction.Hidden} {pawn.Faction.HostileTo(Faction.OfPlayer)} {!pawn.IsPrisonerOfColony} {pawn.RaceProps.Humanlike}", print: Settings.debugMode);
-                if (pawn?.Faction != null && pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
-                    pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
+                try
                 {
-                    ___pawn.Map.designationManager.RemoveAllDesignationsOn(___pawn);
-                    ___pawn.Map.designationManager.AddDesignation(new Designation(___pawn, CaptureThemDefOf.CaptureThemCapture));
+
+                    var pawn = ___pawn;
+                    if (pawn == null)
+                    {
+                        MyLog.Warning("pawn == null");
+                        return;
+                    }
+                    if (pawn.Faction == null)
+                    {
+                        MyLog.Warning($"{pawn.Name.ToStringFull} Faction == null");
+                        return;
+                    }
+                    else
+                    {
+                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.Faction}", print: Settings.debugMode);
+                    }
+                    if (pawn.RaceProps == null)
+                    {
+                        MyLog.Warning($"{pawn.Name.ToStringFull} RaceProps == null");
+                        return;
+                    }
+                    else
+                    {
+                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.RaceProps.Humanlike}", print: Settings.debugMode);
+                    }
+                    if (pawn.Map == null)
+                    {
+                        MyLog.Warning($"{pawn.Name.ToStringFull} Map == null");
+                        return;
+                    }
+                    else
+                    {
+                        MyLog.Message($"{pawn.Name.ToStringFull}/{pawn.Map}", print: Settings.debugMode);
+                    }
+                    if (pawn.Faction != Faction.OfPlayer && !pawn.Faction.Hidden &&
+                        pawn.Faction.HostileTo(Faction.OfPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.Humanlike)
+                    {
+                        ___pawn.Map.designationManager.RemoveAllDesignationsOn(___pawn);
+                        ___pawn.Map.designationManager.AddDesignation(new Designation(___pawn, CaptureThemDefOf.CaptureThemCapture));
+                    }
+                }
+                catch (Exception e)
+                {
+                    MyLog.Error(e.ToString());
                 }
 
             }
